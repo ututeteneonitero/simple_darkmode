@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sesi 6</title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a onclick="reload()" id="home">Home</a>
+            <a onclick="darkmode()" id="mode">Dark-Mode</a>
+        </nav>
+        <h1>dark mode test learn</h1>
+        <p id="info" class="info"></p>
+    </div>
+
+<!-- ========= initializing function ======== -->
+    <script>
+        let body = document.body;
+        let info = document.getElementById("info");
+        let mode = document.getElementById("mode");
+        let home = document.getElementById("home");
+
+        const darkLimit = 5;
+        let darkCounter = 0;
+     
+        function darkmode(){
+            console.log(darkCounter);
+            
+            if (darkCounter == darkLimit ){
+                mode.style.display = "none";
+                info.textContent = "jatah fitur darkmode anda sudah habis";
+                home.textContent = "restart";
+                return;
+            }
+            darkCounter +=1;
+            if (darkCounter == 0 || darkCounter % 2 != 0){
+                mode.textContent = "light-Mode";
+            }
+            if (darkCounter % 2 == 0 ){
+                mode.textContent = "Dark-Mode";
+            }
+            let darkRemainingLeft = darkLimit - darkCounter;
+
+            // rander ke info element
+            info.textContent = `Darkmode dipakai ${darkCounter}x, tersisa ${darkRemainingLeft}`;
+
+            body.classList.toggle("dark");
+        }
+
+        function reload(){
+            location.reload();
+        }
+    </script>
+</body>
+</html>
